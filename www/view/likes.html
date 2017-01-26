@@ -1,0 +1,21 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <i
+      class="button icon-left ion-chevron-left button-clear button-dark"
+      ng-click="hideLikes()">Retour</i>
+  </ion-header-bar>
+  <ion-content>
+    <ion-refresher
+      pulling-text="Rechargement..."
+      on-refresh="refreshLikes()"></ion-refresher>
+    <div class="list">
+      <div ng-repeat="like in likes">
+        <div class="item item-avatar">
+          <img ng-src="{{'./../' + like.fromUser.profilePictureURL}}">
+          <h2>Utilisateur: {{like.fromUser.username}}</h2>
+          <label>Date de like: {{like.createdAt}}</label>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

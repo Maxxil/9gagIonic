@@ -1,0 +1,34 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1
+      ng-click="hideCommentaires()"
+      class="button icon-left ion-chevron-left button-clear button-dark">Retour</h1>
+  </ion-header-bar>
+  <ion-content>
+    <ion-refresher
+      pulling-text="Rechargement..."
+      on-refresh="refreshCommentaires()"></ion-refresher>
+
+    <div class="list">
+      <div ng-repeat="commentaire in commentaires">
+        <div class="item item-avatar">
+          <img ng-src="{{'./../' + commentaire.fromUser.profilePictureURL}}">
+          <h2>Utilisateur: {{commentaire.fromUser.username}}</h2>
+          <label>Date de like: {{commentaire.createdAt}}</label>
+        </div>
+        <div>
+          <p>{{commentaire.message}}</p>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+  <ion-footer-bar>
+    <label class="item item-input">
+      <input type="text" placeholder="Commentaire"  ng-model="message">
+    </label>
+    <button class="button button-positive" ng-click="ajouterCommentaire(message)" ng-disabled="disabled">
+      Ajouter Commentaire
+    </button>
+  </ion-footer-bar>
+</ion-modal-view>

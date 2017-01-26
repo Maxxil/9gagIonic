@@ -1,0 +1,38 @@
+<ion-view view-title="Home">
+  <ion-content>
+    <ion-refresher
+      pulling-text="Rechargement..."
+      on-refresh="refresh()"></ion-refresher>
+    <ul class="list">
+      <li ng-repeat="post in posts" >
+        <div class="item item-avatar">
+          <img ng-src="{{'./../'+ post.user.profilePictureURL}}"/>
+          <h2>{{post.user.username}}</h2>
+          <p>{{post.user.createdAt}}</p>
+        </div>
+        <div class="card">
+          <div >
+            <img ng-src="{{'./../' + post.imageURL}}">
+          </div>
+          <div >
+            <p>{{post.message}}</p>
+          </div>
+          <div>
+            <button ng-if="!isLiked(post)" class="button button-positive icon ion-ios-heart-outline" ng-click="like(post)">
+              Like
+            </button>
+
+            <button ng-if="isLiked(post)" class="button button-assertive icon ion-ios-heart-outline" ng-click="unlike(post)">
+              UnLike
+            </button>
+
+            <p><span ng-click="showLikes(post.id)">{{post.likesCount}} J'aime</span>
+              <span ng-click="showCommentaires(post.id)">{{post.commentsCount}} Commentaires</span></p>
+          </div>
+        </div>
+
+      </li>
+    </ul>
+  </ion-content>
+
+</ion-view>
